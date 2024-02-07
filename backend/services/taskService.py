@@ -5,6 +5,13 @@ from bson import ObjectId
 
 #TODO: Agregar las funciones de consulta y agregar docstrings
 
+async def get_all_tasks():
+    tasks = []
+    cursor = collection.find({})
+    async for document in cursor:
+        tasks.append(Task(**document))
+    return tasks
+
 
 async def get_task_by_id(id):
     task = await collection.find_one({"_id": ObjectId(id)})
@@ -20,14 +27,6 @@ async def create_task(task):
 async def get_task_by_title(title):
     task = await collection.find_one({"title": title})
     return task
-
-
-async def get_all_tasks():
-    tasks = []
-    cursor = collection.find({})
-    async for document in cursor:
-        tasks.append(Task(**document))
-    return tasks
 
 
 async def update_task_by_id(id: str, data):
