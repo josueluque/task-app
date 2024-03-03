@@ -4,6 +4,11 @@
 
 
 body{
-    background: #202020;
+    /* background: #177c77; */
+    background-image: url(../public/bg-jjk.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     color: white;
 }
+
