@@ -7,8 +7,6 @@ from typing import Union
 task = APIRouter()
 
 
-#TODO: Hacer el crud, Agregar exceptions, Completar decoradores
-
 @task.get('/task/tasks', response_model=list[Task], tags=['task'])
 async def get_tasks():
     try:
@@ -26,7 +24,7 @@ async def get_task(id: str):
     raise HTTPException(status_code=status.HTTP_404_NOT_FOUND , detail=f"Task with id: {id} not found")    
 
 
-@task.post('/task/createTask', response_model=Union[Task, str], tags=['task'])
+@task.post('/task/createTask', response_model=Union[Task, str], tags=['task']) 
 async def create_task(task: Task):
     task_found = await taskService.get_task_by_title(task.title)
     if task_found:
@@ -50,7 +48,7 @@ async def update_task(id: str, task: UpdateTask):
     response = await taskService.update_task_by_id(id, task)
     if response:
         return response
-    raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Task with idL {id} not found")
+    raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Task with id {id} not found")
 
 
 @task.delete('/task/deleteTask/{id}', response_model=str, tags=['task'])   

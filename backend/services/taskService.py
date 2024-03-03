@@ -3,8 +3,6 @@ from models.taskModel import Task
 from bson import ObjectId
 
 
-#TODO: Agregar las funciones de consulta y agregar docstrings
-
 async def get_all_tasks():
     tasks = []
     cursor = collection.find({})
