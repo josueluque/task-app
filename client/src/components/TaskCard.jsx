@@ -1,12 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { updateTask } from "../../api/tasks";
 
+// Defino el componente de las tarjetas de cada tarea
 function TaskCard({ task }) {
   const navigate = useNavigate();
 
   return (
     <div
-      className="bg-zinc-950 p-4 hover:cursor-pointer hover:bg-gray-950"
+      className="bg-zinc-950 p-4 hover:cursor-pointer hover:bg-gray-950 rounded"
       onClick={() => {
         navigate(`/task/${task._id}`);
       }}
