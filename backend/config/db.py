@@ -1,8 +1,10 @@
 # Importación del módulo necesario para la conexión con MongoDB
 from motor.motor_asyncio import AsyncIOMotorClient
-from decouple import config
+from config.settings import get_settings
+
+settings = get_settings()
 
 # Establecimiento de la conexión con MongoDB
-client = AsyncIOMotorClient(config("MONGO_URL"))
+client = AsyncIOMotorClient(settings.DATABASE_URI)
 database = client.taskdb
 collection = database.tasks
