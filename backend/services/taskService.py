@@ -1,4 +1,4 @@
-from db.db import collection
+from config.db import collection
 from models.taskModel import Task
 from bson import ObjectId
 

@@ -1,8 +1,11 @@
 from fastapi import FastAPI
 from routes.taskRoute import task
 from fastapi.middleware.cors import CORSMiddleware
-from decouple import config # Modulo de python-decouple
+from config.settings import get_settings
 import uvicorn
+
+
+settings = get_settings()
 
 # Creación de la aplicación FastAPI
 app = FastAPI(
@@ -11,14 +14,13 @@ app = FastAPI(
     version="0.1.0"
 )
 
-
 @app.get('/')
 def welcome():
     return {"message": "Welcome to my FastAPI project"}
 
 # Definicion de origins permitidos para establecer conexiones
 origins = [
-    config("FRONTEND_URL"),
+    settings.FRONTEND_HOST,
 ]
 
 # Definicion de middleware para manejar solicitudes de recursos cruzados (CORS)
