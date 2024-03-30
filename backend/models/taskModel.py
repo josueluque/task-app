@@ -1,18 +1,22 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 from typing import Optional
 from bson import ObjectId
+from pydantic.functional_validators import BeforeValidator
+from typing_extensions import Annotated
 
 # Clase que hereda de ObjectId para validación personalizada
-class PyObjectId(ObjectId):
-    @classmethod
-    def __get_validators__(cls):
-        yield cls.validate
+# class PyObjectId(ObjectId):
+#     @classmethod
+#     def __get_validators__(cls):
+#         yield cls.validate
 
-    @classmethod
-    def validate(cls, v):
-        if not ObjectId.is_valid(v):
-            raise ValueError('Invalid ObjectId')
-        return str(v)
+#     @classmethod
+#     def validate(cls, v):
+#         if not ObjectId.is_valid(v):
+#             raise ValueError('Invalid ObjectId')
+#         return str(v)
+    
+PyObjectId = Annotated[str, BeforeValidator(str)]
     
 
 class Task(BaseModel):
@@ -20,23 +24,31 @@ class Task(BaseModel):
     title: str
     description: Optional[str] = None
     completed: bool = False
-
-    class Config:
-        orm_mode = True  # Configuración para habilitar el modo ORM
-        allow_population_by_field_name = True  # Permite la población por nombre de campo
-        json_encoders = {
-            ObjectId: str  # Convierte ObjectId a cadena al serializar a JSON
-        }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        arbitrary_types_allowed=True,
+        json_schema_extra={
+            "example": {
+                "title": "Task title",
+                "description": "Task description",
+                "completed": False,
+            }
+        },
+    )
 
 
 class UpdateTask(BaseModel):
     title: Optional[str] = None
     description: Optional[str] = None
     completed: Optional[bool] = None
-
-    # class Config:
-    #     orm_mode = True
-    #     allow_population_by_field_name = True
-    #     json_encoders = {
-    #         ObjectId: str
-    #     }
+    model_config = ConfigDict(
+        arbitrary_types_allowed=True,
+        json_encoders={ObjectId: str},
+        json_schema_extra={
+            "example": {
+                "title": "Task title",
+                "description": "Task description",
+                "completed": False,
+            }
+        },
+    )
