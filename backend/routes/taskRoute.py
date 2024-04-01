@@ -45,7 +45,9 @@ async def create_task(task: Task):
 @task.put('/updateTask/{id}', response_model=Union[UpdateTask, str])
 async def update_task(id: str, task: UpdateTask):
     task_found = await taskService.get_task_by_title(task.title)
-    if task_found:
+    task_found_id = await taskService.get_task_by_id(id)
+
+    if task_found and task_found_id["title"] != task.title:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail= f"Task could not be updated. Existing task: {task.title}")
     
     response = await taskService.update_task_by_id(id, task)
