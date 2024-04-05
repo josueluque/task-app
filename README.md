@@ -16,37 +16,33 @@
 
 #### Task App developed with:
 
-- _FastAPI_ -> Framework para crear APIs web con Python. Destacado por su alta velocidad, tipado estático y generación automática de documentación interactiva en Swagger.
-- _React_ -> La Biblioteca de JavaScript para construir interfaces de usuario interactivas y dinámicas.
-- _MongoDB_ -> Base de datos NoSQL escalable y flexible, para el manejo de los datos (crear, eliminar, modificar y obtener las tareas)
-- _Uvicorn_ -> Servidor web ASGI (Asynchronous Server Gateway Interface) para aplicaciones Python, utilizado para ejecutar aplicaciones FastAPI de forma asíncrona y eficiente.
+- _FastAPI_ -> Framework para crear la API. Provee una alta velocidad, tipado estático y generación automática de documentación interactiva en Swagger.
+- _React_ -> La Biblioteca de JavaScript para la construcción de la interfaz de usuario.
+- _MongoDB_ -> Base de datos NoSQL, para el manejo de los datos de manera escalable y flexible.
+- _Uvicorn_ -> Servidor web ASGI (Asynchronous Server Gateway Interface) para aplicaciones Python, utilizado para ejecutar la app FastAPI de forma asíncrona y eficiente.
 
 ## Installation 🔧
 
 ### Step 1: Backend
 
+```
+# (RECOMENDED): Create virtual environment with Anaconda 
+conda create --name NAME-VIRTUAL-ENVIROMENT python=3
+
+# Fork or clone this respository
+git clone https://github.com/josueluque/task-app.git
+
+# Install all project dependencies
+pip install -r requirements.txt
+
+```
+
 > [!IMPORTANT]
 > Before running the `docker compose up -d` command, you must define the database environment variables in the .env file.
 
 ```
-# Fork or clone this respository
-git clone https://github.com/josueluque/task-app.git
-
 cd task-app/backend
 docker compose up -d
-```
-
-> (_Recomended_) -> Create virtual environment with [Anaconda](https://www.anaconda.com/download)
-
-```
-# Install all project dependencies
-pip install -r requirements.txt
-```
-
-#### Start Backend 🚀
-
-```
-python app.py
 ```
 
 <details>
@@ -65,8 +61,18 @@ python app.py
   ```
 
   </details>
+  
+#### Start Backend 🚀
+
+```
+python app.py
+```
+
+
 
 ### Step 2: Client
+> [!IMPORTANT]
+> Before running the `npm install` command, you must have the npm package installed.
 
 ```
 cd task-app/client
