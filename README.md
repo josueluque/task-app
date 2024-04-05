@@ -23,7 +23,7 @@
 
 ## Installation 🔧
 
-#### Backend
+### Step 1: Backend
 
 > [!IMPORTANT]
 > Before running the `docker compose up -d` command, you must define the database environment variables in the .env file.
@@ -53,29 +53,20 @@ python app.py
 	<summary>Enviroment variables</summary>
 	
 - MongoDB:
-	```py
-  MYSQL_HOST= localhost
-  MYSQL_USER= root
-  MYSQL_PASSWORD= mysql
-  MYSQL_PORT= 3306
-  MYSQL_DB= userdb
-	```
+	```env
+  MONGO_HOST= localhost
+  MONGO_USER= root
+  MONGO_PASSWORD= mongo
+  MONGO_PORT= 27017	
+  ```
+- Client:
+  ```env
+  FRONTEND_HOST= http://localhost:5173
+  ```
 
-- JWT and Secret key:
-  ```py
-  JWT_SECRET='secret'
-  JWT_ALGORITHM='HS256'
-  SECRET_KEY='secret_key'
-  ```
-- Admin:
-  ```py
-  # User Admin
-  ADMIN_EMAIL="admin@gmail.com"
-  ADMIN_PASSWORD="admin"
-  ```
   </details>
 
-#### Client
+### Step 2: Client
 
 ```
 cd task-app/client
