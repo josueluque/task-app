@@ -34,33 +34,19 @@ git clone https://github.com/josueluque/task-app.git
 
 # Install all project dependencies
 pip install -r requirements.txt
-
 ```
 
 > [!IMPORTANT]
-> Before running the `docker compose up -d` command, you must define the database environment variables in the .env file.
+> Before running the `docker compose up -d` command, you must run the `invoke env` command
 
 ```
 cd task-app/backend
+
+# Generate environment variables for the backend
+invoke env
+
 docker compose up -d
 ```
-
-<details>
-	<summary>Enviroment variables</summary>
-	
-- MongoDB:
-	```env
-  MONGO_HOST= localhost
-  MONGO_USER= root
-  MONGO_PASSWORD= mongo
-  MONGO_PORT= 27017	
-  ```
-- Client:
-  ```env
-  FRONTEND_HOST= http://localhost:5173
-  ```
-
-  </details>
   
 #### Start Backend 🚀
 
@@ -76,7 +62,11 @@ python app.py
 
 ```
 cd task-app/client
+# Ensure that all project dependencies are available and ready for use.
 npm install
+
+# Generate environment variables for the client
+npm generate:env
 ```
 
 #### Start client 🚀
