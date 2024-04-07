@@ -6,5 +6,5 @@ settings = get_settings()
 
 # Establecimiento de la conexión con MongoDB
 client = AsyncIOMotorClient(settings.DATABASE_URI)
-database = client.taskdb
+database = client[settings.MONGO_DB]
 collection = database.tasks

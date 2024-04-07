@@ -19,7 +19,7 @@ class Settings(BaseSettings):
     MONGO_PASS: str = config("MONGO_PASSWORD", '')
     MONGO_PORT: int = int(config("MONGO_PORT", 27017))
     MONGO_DB: str = config("MONGO_DB", 'taskdb')
-    #DATABASE_URI: str = f"mongodb://{MONGO_USER}:%s@{MONGO_HOST}:{MONGO_PORT}/{MONGO_DB}" % quote_plus(MONGO_PASS)
+    # DATABASE_URI: str = f"mongodb://{MONGO_USER}:%s@{MONGO_HOST}:{MONGO_PORT}/{MONGO_DB}" % quote_plus(MONGO_PASS)
     DATABASE_URI: str = f"mongodb://{MONGO_USER}:%s@{MONGO_HOST}:{MONGO_PORT}" % quote_plus(MONGO_PASS)
 
     # JWT Secret Key
