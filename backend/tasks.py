@@ -6,7 +6,7 @@ from invoke import task
 
 @task
 def env(ctx):   # 'ctx' convención comúnmente utilizada en Invoke para referirse al contexto de ejecución de tareas. 
-    ctx.run("python config/fs.py")
+    ctx.run("python config/genv.py")
 
 @task
 def dependencies(ctx):
