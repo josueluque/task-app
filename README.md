@@ -17,16 +17,16 @@
 #### Task App developed with:
 
 - _FastAPI_ -> Framework para crear la API. Provee una alta velocidad, tipado estático y generación automática de documentación interactiva en Swagger.
-- _React_ -> La Biblioteca de JavaScript para la construcción de la interfaz de usuario.
-- _MongoDB_ -> Base de datos NoSQL, para el manejo de los datos de manera escalable y flexible.
-- _Uvicorn_ -> Servidor web ASGI (Asynchronous Server Gateway Interface) para aplicaciones Python, utilizado para ejecutar la app FastAPI de forma asíncrona y eficiente.
+- _React_ -> Biblioteca de JavaScript para la construcción de la interfaz de usuario.
+- _MongoDB_ -> Base de datos NoSQL, para el manejo de los datos.
+- _Uvicorn_ -> Servidor web ASGI (Asynchronous Server Gateway Interface), utilizado para ejecutar la app FastAPI de forma asíncrona y eficiente.
 
 ## Installation 🔧
 
 ### Step 1: Backend
 
 ```
-# (RECOMENDED): Create virtual environment with Anaconda 
+# (RECOMMENDED): Create virtual environment with Anaconda 
 conda create --name NAME-VIRTUAL-ENVIROMENT python=3
 
 # Fork or clone this respository
